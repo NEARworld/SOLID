@@ -1,5 +1,3 @@
-import {PopulationManager} from "./PopulationManager.js";
-
 export class Unit {
   life: number;
   population: number;
@@ -7,7 +5,6 @@ export class Unit {
   constructor(life: number, population: number) {
     this.life = life;
     this.population = 1;
-    PopulationManager.counter += population;
   }
 }
 

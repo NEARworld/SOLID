@@ -1,18 +1,33 @@
-import {Marine, Tank, Unit} from "./classes/Unit.js";
-import {PopulationManager} from "./classes/PopulationManager.js";
+import { Marine, Tank, Unit } from "./classes/Unit.js";
+import { PopulationManager } from "./classes/PopulationManager.js";
 
-const tanks: Tank[] = [];
+let units: Unit[] = [];
+const deployBtnMarine = document.getElementById("deploy-btn-marine")!;
+const deployBtnTank = document.getElementById("deploy-btn-tank")!;
 
-const marine = new Marine();
-const tank = new Tank();
+deployBtnMarine.addEventListener("click", () => {
+  units.push(new Marine());
+});
+deployBtnTank.addEventListener("click", () => {
+  units.push(new Tank());
+});
 
-Array.from({length: 200}, () => {
-    tanks.push(new Tank());
-})
+const btnContainer = document.getElementById("btn-container")!;
+btnContainer.addEventListener("click", () => {
+  printUnitsAmount();
+  logPopulationStatus();
+});
 
-console.log('PopulationManager.counter:', PopulationManager.counter);
-const color = PopulationManager.checkPopulationLimit();
+function printUnitsAmount() {
+  const counter = document.getElementById("counter")!;
+  counter.innerText = `deployed units: ${PopulationManager.countTotalPopulation(
+    units,
+  )}`;
+}
+function logPopulationStatus() {
+  const color = PopulationManager.checkPopulationLimit();
 
-if (color === 'red')
+  if (color === "red")
     console.log(`The population has exceeded the maximum population value!`);
-else console.log('the population is normal!');
+  else console.log("the population is normal!");
+}
