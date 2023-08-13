@@ -1,18 +1,13 @@
+import {PopulationManager} from "./PopulationManager.js";
+
 export class Unit {
   life: number;
   population: number;
-  static counter: number = 0;
-  private static readonly MAX = 200;
 
   constructor(life: number, population: number) {
     this.life = life;
     this.population = 1;
-    Unit.counter += population;
-  }
-
-  static checkPopulationLimit() {
-    if (Unit.counter > Unit.MAX) return 'red';
-    else return 'blue';
+    PopulationManager.counter += population;
   }
 }
 
