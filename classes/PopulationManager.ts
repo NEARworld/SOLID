@@ -1,18 +1,24 @@
 import { Unit } from "./Unit.js";
 
-export class PopulationManager {
-  population: number;
+// Interface Segregation Principle (ISP)
+// make interface smaller
+export interface IPopulationManager {
+  supply: number;
+}
+
+export class PopulationManager implements IPopulationManager {
   private static counter: number = 0;
   private static readonly MAX = 200;
+  supply: number;
 
   constructor() {
-    this.population = 0;
+    this.supply = 0;
   }
 
   static countTotalPopulation(units: Unit[]) {
     this.counter = 0;
     units.forEach((unit) => {
-      this.counter += unit.population;
+      this.counter += unit.supply;
     });
     return this.counter;
   }
