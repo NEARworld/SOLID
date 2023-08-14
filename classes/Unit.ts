@@ -4,7 +4,7 @@ export class Unit {
 
   constructor(life: number, population: number) {
     this.life = life;
-    this.population = 1;
+    this.population = population;
   }
 }
 
@@ -17,6 +17,5 @@ export class Marine extends Unit {
 export class Tank extends Unit {
   constructor() {
     super(150, 2);
-    this.population += 1;
   }
 }
