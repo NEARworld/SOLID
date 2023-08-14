@@ -1,8 +1,10 @@
-export class Unit {
-  life: number;
-  population: number;
+import { IPopulationManager } from "./PopulationManager.js";
 
-  constructor(life: number, population: number) {
+export class Unit implements IPopulationManager {
+  life: number;
+  supply: number;
+
+  constructor(life: number, supply: number) {
     this.life = life;
     this.population = population;
   }
